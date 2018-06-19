@@ -24,10 +24,10 @@ Or alternatively, include a dependency for `smgladkovskiy/phpcs-git-pre-commit` 
 To enable code sniff, аdd to `post-install-cmd` and `post-update-cmd` in `composer.json` installation script:
 
     "post-install-cmd": [
-        "sh ./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh"
+        "@php -r \"file_exists('./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh') && exec('sh ./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh');\""
     ],
     "post-update-cmd": [
-        "sh ./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh"
+        "@php -r \"file_exists('./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh') && exec('sh ./vendor/smgladkovskiy/phpcs-git-pre-commit/src/setup.sh');\""
     ]
 
 Then run `composer install` or `composer update`. `pre-commit` hook will be installed or updated if it already exists.
